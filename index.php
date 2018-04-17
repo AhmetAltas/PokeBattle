@@ -1,62 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+   var php_var = "<?php echo $php_var; ?>";
+</script>
+	<title>pokebattle</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
 <?php
 
 require 'Pokemon.php';
 require 'Attack.php';
 
+$pokemons = [];
+
 $m = new Pokemon("Muk", 75,105);
 $m->Attacks[] = new Attack("Pound", 40, 100);
-
-prettyPrint($m);
+$pokemons[] = $m;
 
 $l = new Pokemon("Lucario", 70, 70);
 $l->Attacks[] = new Attack("Quick Attack", 40, 100);
-
-prettyPrint($l);
+$pokemons[] = $l;
 
 $i = new Pokemon("Infernape", 71,76);
 $i->Attacks[] = new Attack("Scratch", 40, 100);
-
-prettyPrint($i);
+$pokemons[] = $i;
 
 $n = new Pokemon("Nidoran", 40,46);
 $n->Attacks[] = new Attack("Peck", 35, 100);
-
-prettyPrint($n);
+$pokemons[] = $n;
 
 $me = new Pokemon("Mew", 100,100);
 $me->Attacks[] = new Attack("Pound", 40, 100);
-
-prettyPrint($me);
+$pokemons[] = $me;
 
 $b = new Pokemon("Beedrill", 40,65);
 $b->Attacks[] = new Attack("Twineedle", 25, 100);
-
-prettyPrint($b);
+$pokemons[] = $b;
 
 $bl = new Pokemon("Blastoise", 100,79);
 $bl->Attacks[] = new Attack("Tackle", 40, 100);
-
-prettyPrint($bl);
+$pokemons[] = $bl;
 
 $p = new Pokemon("Pidgeotto", 55,63);
 $p->Attacks[] = new Attack("Tackle", 40, 100);
-
-prettyPrint($p);
+$pokemons[] = $p;
 
 $mt = new Pokemon("Mewtwo", 90,106);
 $mt->Attacks[] = new Attack("Confusion", 50, 100);
-
-prettyPrint($mt);
+$pokemons[] = $mt;
 
 $allP = array($mt, $m);
 
-foreach($bl->Attacks as $attack) {
-    prettyPrint("Execute attack " . $attack->Name . ' on ' . $p->Name);
-    $attack->Execute($p);
+$pm1 = array_rand($pokemons, 1);
+$pm2 = array_rand($pokemons, 1);
+
+prettyPrint($pokemons[$pm1]);
+prettyPrint($pokemons[$pm2]);	
+
+//prettyPrint($pokemons[$pm1]);
+
+foreach($pokemons[$pm1]->Attacks as $attack) {
+	    prettyPrint("Execute attack " . $attack->Name . ' on ' . $pokemons[$pm2]->Name. ' by ' . $pokemons[$pm1]->Name);
+	    $attack->Execute($pokemons[$pm2]);
 }
-
-prettyPrint($p);
-
 
 
 
@@ -65,3 +77,6 @@ function prettyPrint($var) {
     print_r($var);
     echo '</pre>';
 }
+?>
+
+
