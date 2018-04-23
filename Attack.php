@@ -10,15 +10,37 @@ class Attack {
         $this->Accuracy = $accuracy;
     }
 
-    public function Execute($target) {
+    public function Execute1($target) {
         if ($target == null) {
             die('Cannot execute Attack; target is null');
         }
-/*
-        if (gettype($target) !=  "Pokemon") {
-            die('Cannot execute Attack; target is not of type Pokemon (' . gettype($target) . ')');
+
+        $this->AttackPoints = $this->AttackPoints / 2;
+
+        $target->DoDamage($this->AttackPoints);
+    }
+
+    public function Execute2($target) {
+        if ($target == null) {
+            die('Cannot execute Attack; target is null');
         }
-*/
+
+        $this->AttackPoints = $this->AttackPoints * 2;
+
+        $target->DoDamage($this->AttackPoints);
+    }
+
+    public function Execute3($target) {
+        if ($target == null) {
+            die('Cannot execute Attack; target is null');
+        }
+    }
+
+    public function Execute4($target) {
+        if ($target == null) {
+            die('Cannot execute Attack; target is null');
+        }
+
         $target->DoDamage($this->AttackPoints);
     }
 }
